@@ -81,7 +81,7 @@ pip install -r requirements.txt
 
 ```python
 import pickle
-from LogosKG import LogosKG
+from LogosKG.LogosKG import LogosKG
 
 # Load your graph data (list of tuples)
 with open("SNOMED_CUI_MAJID_Graph_wSelf.pkl", "rb") as f:
@@ -114,7 +114,7 @@ print(path_data["paths"])
 The API remains consistent, allowing scalable integration without modifying core application logic.
 
 ```python
-from LogosKGLarge import LogosKGLarge
+from LogosKG.LogosKGLarge import LogosKGLarge
 
 kg_large = LogosKGLarge(
     partition_dir="./graph_partitions",
