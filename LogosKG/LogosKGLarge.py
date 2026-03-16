@@ -43,7 +43,7 @@ class LogosKGLarge:
         backend: str = "numba",
         device: str = "cpu",
         cache_size: int = 10,
-        triplets_for_auto: Optional[List[Tuple[str, str, str]]] = None,
+        triplets: Optional[List[Tuple[str, str, str]]] = None,
         num_partitions: int = 16
     ):
         """
@@ -54,7 +54,7 @@ class LogosKGLarge:
             backend: Computation backend ('scipy', 'numba', or 'torch')
             device: Device for torch backend ('cpu' or 'cuda')
             cache_size: Number of partitions to keep in memory
-            triplets_for_auto: Triplets for auto-partitioning if partitions don't exist
+            triplets: Triplets for auto-partitioning if partitions don't exist
             num_partitions: Number of partitions to create (if auto-partitioning)
         """
         if backend not in self.VALID_BACKENDS:
@@ -72,13 +72,13 @@ class LogosKGLarge:
         self.num_partitions = num_partitions
 
         if not self._check_partitions_exist():
-            if triplets_for_auto is None:
+            if triplets is None:
                 raise ValueError(
                     f"Partitions not found in '{partition_dir}' and no triplets provided for auto-partitioning."
                 )
             print(
                 f"Partitions not found. Auto-partitioning graph into {num_partitions} partitions...")
-            self._auto_partition(triplets_for_auto)
+            self._auto_partition(triplets)
 
         self._load_metadata()
 
