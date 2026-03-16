@@ -26,7 +26,7 @@ import torch
 from collections import defaultdict, OrderedDict
 from typing import List, Dict, Any, Optional, Tuple, Union, Set
 from numba import njit
-from LogosKG.utils.KGPartitioner import KnowledgeGraphPartitioner
+from utils.KGPartitioner import KnowledgeGraphPartitioner
 
 
 class LogosKGLarge:
